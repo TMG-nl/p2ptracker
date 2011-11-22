@@ -1,0 +1,9 @@
+redis
+flask
+flask-testing
+nose
+coverage
+mocker
+pylint
+cherrypy
+

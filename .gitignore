@@ -1,0 +1,10 @@
+.project
+*.pyc
+.pydevproject
+*.swp
+nbproject
+.metadata
+.settings
+.idea
+*.log
+*~
