@@ -1,22 +1,26 @@
+# Introduction
+
+# Configfile
+
+# Redis storage model
+
 We use redis to store tracker information in including transfer stats for any
-running transfers. This module has all stuff related to that
+running transfers.
 
-Data structure in redis:
+racks = all racks we've seen
+rack:<rackname> = all hosts we've ever seen in this rack
 
-racks = ( all racks we've seen)
-rack:<rackname> = ( all hosts we've ever seen in this rack )
+transfers = all seen info_hashes
+active_transfers = all active info_hashes
 
-transfers = ( all seen info_hashes )
-active_transfers = ( all active info_hashes )
+<hash>:peers:N =  all seen peers for the hash 
+<hash>:peers:R =  all representants for the hash 
+<hash>:peers:S =  all seeders for the hash 
+<hash>:peers:L =  all leechers for the hash 
 
-<hash>:peers:N = ( all seen peers for the hash )
-<hash>:peers:R = ( all representants for the hash )
-<hash>:peers:S = ( all seeders for the hash )
-<hash>:peers:L = ( all leechers for the hash )
-
-<hash>:rack:<rackname>:N = ( all peers for the hash in a rack )
-<hash>:rack:<rackname>:R = ( all repr for the hash in a rack )
-<hash>:rack:<rackname>:S = ( all seeders for the hash in a rack )
+<hash>:rack:<rackname>:N =  all peers for the hash in a rack 
+<hash>:rack:<rackname>:R =  all repr for the hash in a rack 
+<hash>:rack:<rackname>:S =  all seeders for the hash in a rack 
 
 <hash>:peer:<peeripaddress>:compact = True/False
 <hash>:peer:<peeripaddress>:port = port where the client is operating on
@@ -47,9 +51,3 @@ hash = uppercase hash for the torrent
 ALL VALUES ARE STRINGS !!!!!!
 
 Deactivation renames all keys that start with <hash>, to <datetime>:<hash> where <datetime> is the datetime of deactivation
-
-# TODO: There's a bunch of pending refactorings for this module
-# 1. split in parts for peer data, rack data, transfer data and maybe stats, it's getting way to big
-# 2. standardize on passing in pipe into every method and returning one if it was passed in, this allows atomicness
-# 3. Move all individual peer related data back into a hash structure inside redis (all <hash>:peer:<peeripaddress>:? data)
-
