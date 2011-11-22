@@ -10,18 +10,24 @@ running transfers.
 racks = all racks we've seen  
 rack:<rackname> = all hosts we've ever seen in this rack  
 
+<pre>
 transfers = all seen info_hashes  
 active_transfers = all active info_hashes  
-
+</pre>
+<pre>
 <hash>:peers:N =  all seen peers for the hash  
 <hash>:peers:R =  all representants for the hash  
 <hash>:peers:S =  all seeders for the hash  
 <hash>:peers:L =  all leechers for the hash  
+</pre>
 
+<pre>
 <hash>:rack:<rackname>:N =  all peers for the hash in a rack  
 <hash>:rack:<rackname>:R =  all repr for the hash in a rack  
 <hash>:rack:<rackname>:S =  all seeders for the hash in a rack  
+</pre>
 
+<pre>
 <hash>:peer:<peeripaddress>:compact = True/False  
 <hash>:peer:<peeripaddress>:port = port where the client is operating on  
 <hash>:peer:<peeripaddress>:peer_id = peer id from client  
@@ -34,7 +40,9 @@ active_transfers = all active info_hashes
 <hash>:peer:<peeripaddress>:uploaded = bytes uploaded to other clients  
 <hash>:peer:<peeripaddress>:rack = rack where the peer is located  
 <hash>:peer:<peeripaddress>:hostname = hostname reported for ipaddress  
+</pre>
 
+<pre>
 <hash>:length = length of the torrent payload  
 <hash>:name = name of the torrent  
 <hash>:registered = datetime transfer was activated  
@@ -43,10 +51,13 @@ active_transfers = all active info_hashes
 <hash>:last_started = datetime last peer started downloading  
 <hash>:first_completed = datetime first peer completed downloading  
 <hash>:last_completed = datetime last peer completed downloading  
+</pre>
 
+<pre>
 peer = ipaddress:port of the peer  
 rack = rackname  
 hash = uppercase hash for the torrent  
+</pre>
 
 ALL VALUES ARE STRINGS !!!!!!
 
