@@ -1,0 +1,59 @@
+diff -ur libtorrent-0.12.6/src/download/download_wrapper.cc libtorrent-0.12.6.changed/src/download/download_wrapper.cc
+--- libtorrent-0.12.6/src/download/download_wrapper.cc	2009-11-12 09:03:54.000000000 +0100
++++ libtorrent-0.12.6.changed/src/download/download_wrapper.cc	2011-04-11 16:32:47.000000000 +0200
+@@ -268,8 +268,8 @@
+   if (!info()->is_open())
+     return;
+ 
+-  // Every 2 minutes.
+-  if (ticks % 4 == 0) {
++  // Every 30 seconds
++  if (ticks % 1 == 0) {
+     if (info()->is_active()) {
+       if (info()->is_pex_enabled()) {
+         m_main.do_peer_exchange();
+diff -ur libtorrent-0.12.6/src/protocol/peer_connection_leech.cc libtorrent-0.12.6.changed/src/protocol/peer_connection_leech.cc
+--- libtorrent-0.12.6/src/protocol/peer_connection_leech.cc	2009-11-12 09:03:51.000000000 +0100
++++ libtorrent-0.12.6.changed/src/protocol/peer_connection_leech.cc	2011-04-11 16:31:37.000000000 +0200
+@@ -112,7 +112,7 @@
+ template<Download::ConnectionType type>
+ bool
+ PeerConnection<type>::receive_keepalive() {
+-  if (cachedTime - m_timeLastRead > rak::timer::from_seconds(240))
++  if (cachedTime - m_timeLastRead > rak::timer::from_seconds(40))
+     return false;
+ 
+   // There's no point in adding ourselves to the write poll if the
+@@ -151,7 +151,7 @@
+   // Do we also need to remove from download throttle? Check how it
+   // worked again.
+ 
+-  if (!download_queue()->canceled_empty() && m_downStall >= 6)
++  if (!download_queue()->canceled_empty() && m_downStall >= 2)
+     download_queue()->cancel();
+   else if (!download_queue()->queued_empty() && m_downStall++ != 0)
+     download_queue()->stall();
+diff -ur libtorrent-0.12.6/src/torrent/tracker.cc libtorrent-0.12.6.changed/src/torrent/tracker.cc
+--- libtorrent-0.12.6/src/torrent/tracker.cc	2009-11-12 09:03:58.000000000 +0100
++++ libtorrent-0.12.6.changed/src/torrent/tracker.cc	2011-04-11 12:33:07.000000000 +0200
+@@ -46,7 +46,7 @@
+   m_group(0),
+   m_url(url),
+ 
+-  m_normalInterval(1800),
++  m_normalInterval(600),
+   m_minInterval(0),
+ 
+   m_scrapeTimeLast(0),
+diff -ur libtorrent-0.12.6/src/torrent/tracker.h libtorrent-0.12.6.changed/src/torrent/tracker.h
+--- libtorrent-0.12.6/src/torrent/tracker.h	2009-11-12 09:03:58.000000000 +0100
++++ libtorrent-0.12.6.changed/src/torrent/tracker.h	2011-04-11 16:27:28.000000000 +0200
+@@ -97,7 +97,7 @@
+ 
+   void                set_group(uint32_t v)                 { m_group = v; }
+ 
+-  void                set_normal_interval(int v)            { if (v >= 60 && v <= 3600) m_normalInterval = v; }
++  void                set_normal_interval(int v)            { if (v >= 0 && v <= 3600) m_normalInterval = v; }
+   void                set_min_interval(int v)               { if (v >= 0 && v <= 600)   m_minInterval = v; }
+ 
+   bool                m_enabled;

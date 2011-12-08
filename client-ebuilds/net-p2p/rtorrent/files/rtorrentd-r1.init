@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header$
+
+depend() {
+        use net ypbind nis
+        after slapd mysqld postgresql
+}
+
+start() {
+        ebegin "Starting rtorrent"
+        env TERM="xterm" \
+                start-stop-daemon \
+                        --start \
+                        --user $USER \
+                        --env HOME="${CONFIGHOME:-/home/$USER}" \
+                        --name rtorrent \
+                        --exec /usr/bin/screen -- -dmS rtorrentd /usr/bin/rtorrent
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping rtorrent"
+        start-stop-daemon --stop --signal 2 --name rtorrent
+        eend $?
+}
