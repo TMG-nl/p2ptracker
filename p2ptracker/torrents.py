@@ -1,4 +1,9 @@
-__author__ = 'ramon'
+"""
+https://github.com/hyves-org/p2ptracker
+Copyright (c) 2011, Ramon van Alteren
+MIT license: http://www.opensource.org/licenses/MIT
+
+"""
 
 from flask import Module, request, abort, make_response, Response, jsonify, g, send_from_directory, current_app
 from werkzeug import secure_filename

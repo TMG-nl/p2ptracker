@@ -1,4 +1,10 @@
-"""This module implements the rest methods possible on a transfer resource"""
+"""
+https://github.com/hyves-org/p2ptracker
+Copyright (c) 2011, Ramon van Alteren
+MIT license: http://www.opensource.org/licenses/MIT
+
+This module implements the rest methods possible on a transfer resource
+"""
 
 import logging
 import hashlib

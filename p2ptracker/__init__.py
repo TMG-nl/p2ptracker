@@ -1,3 +1,9 @@
+"""
+https://github.com/hyves-org/p2ptracker
+Copyright (c) 2011, Ramon van Alteren
+MIT license: http://www.opensource.org/licenses/MIT
+"""
+
 from flask import Flask, Request, g, current_app
 from werkzeug.contrib.fixers import ProxyFix
 import os

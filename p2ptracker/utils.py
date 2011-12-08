@@ -1,4 +1,10 @@
-""" Various bits and pieces that don't fit comfortable anywhere else"""
+"""
+https://github.com/hyves-org/p2ptracker
+Copyright (c) 2011, Ramon van Alteren
+MIT license: http://www.opensource.org/licenses/MIT
+
+Various bits and pieces that don't fit comfortable anywhere else
+"""
 
 import logging
 import socket

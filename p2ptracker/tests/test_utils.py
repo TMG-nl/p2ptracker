@@ -1,11 +1,15 @@
+"""
+https://github.com/hyves-org/p2ptracker
+Copyright (c) 2011, Ramon van Alteren
+MIT license: http://www.opensource.org/licenses/MIT
+"""
+
 from p2ptracker import create_app
 from p2ptracker import utils
 from flaskext.testing import TestCase
 import os
 import urllib
 import binascii
-
-__author__ = 'ramon'
 
 class UtilsTestCase(TestCase):
 
