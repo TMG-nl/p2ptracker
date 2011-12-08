@@ -19,7 +19,7 @@ class UtilsTestCase(TestCase):
 
     def test_config(self):
         '''Minimal set of default values'''
-        defaultvalues = ['HOST', 'PORT', 'DEBUG', 'HYVES_ENVIRONMENT', 'REDISHOST', 'REDISPORT', 'REDISHOST', 'SMDB_URL',
+        defaultvalues = ['HOST', 'PORT', 'DEBUG', 'REDISHOST', 'REDISPORT', 'REDISHOST', 'SMDB_URL',
                          'MAX_REPR_RACK', 'ACTIVE_INTERVAL', 'PASSIVE_INTERVAL']
         for default in defaultvalues:
             assert default in self.app.config

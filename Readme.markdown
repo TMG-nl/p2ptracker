@@ -58,7 +58,6 @@ The configfile has the following recognized values:
 
 HOST: which hostname is the tracker running
 PORT: which port should it respond to
-HYVES_ENVIRONMENT: Hyves specific setting, could probably be removed
 REDISHOST: where to contact the redis backing store
 REDISPORT: which port to connect to redis on
 SMDB_URL: where to contact the REST servermanagement metadata service

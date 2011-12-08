@@ -4,7 +4,6 @@ Default settings for the app
 HOST = "localhost"
 PORT = "5000"
 DEBUG = True
-HYVES_ENVIRONMENT = "testing"
 REDISHOST = "localhost"
 REDISPORT = 6379
 SMDB_URL = 'http://192.168.135.20:5000'
