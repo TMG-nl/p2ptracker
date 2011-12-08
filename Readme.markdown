@@ -50,6 +50,7 @@ Software.
 # Grouping Nodes
 
 The call to our servermanagement metadata service is extremely simple and can easily be replaced by other logic such as:
+
 * dns calls for TEXT records or LOCATION records
 * Subnet logic (swarms grouped by subnet)
 * Any form of key logic that will group clients by a key based on the ipaddress that they have
