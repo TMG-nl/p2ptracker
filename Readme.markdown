@@ -1,11 +1,12 @@
 # Introduction
 
 This tracker is part of our entire deployment pipeline which consists of several moving parts:
- * Jenkins buildserver(s) that build our sourcecode
- * Custom scripting for starting deploys
- * rtorrent client running on every node participating in a deploy
- * a servermanagement database that holds metadata on nodes in our environment
- * a tracker for bittorrent
+
+* Jenkins buildserver(s) that build our sourcecode
+* Custom scripting for starting deploys
+* rtorrent client running on every node participating in a deploy
+* a servermanagement database that holds metadata on nodes in our environment
+* a tracker for bittorrent
 
 The tracker uses the knowledge we have about our network topology to build two-tier swarms of bittorrent clients. 
 It will return peers in a global swarm to the first two clients in a rack requesting tracker information.
@@ -26,21 +27,34 @@ management system.
 # Disclaimer for general use
 
 This tracker works in our environment with our setup and specifically exploits our knowledge of our network topology. 
-YOUR MILEAGE WILL VARY !! Your network topology is most certainly different than ours, your nodes will be different and
-the servermanagement metadata that we operate is not (yet) opensource.
 
-HYVES NOR THE AUTHOR WILL NOT ACCEPT ANY RESPONSIBILITY, LIABILITY OR CLAIM ANY GUARANTEE THAT THIS WILL WORK FOR YOU.
+YOUR MILEAGE WILL VARY !! 
+
+Your network topology is most certainly different than ours, your nodes will be different and
+the servermanagement metadata REST service that we operate is not (yet) open source.
+
+HYVES, THE AUTHOR OR ANY CONTRIBUTERS WILL NOT ACCEPT ANY RESPONSIBILITY, LIABILITY NOR CLAIM ANY GUARANTEE THAT THIS SOFTWARE WILL WORK FOR YOU.
 IT MAY EAT YOUR CAT, LUNCH OR ENTIRE DATACENTER BANDWIDTH WITHOUT ANY PRIOR NOTICE OR WARNING
 
-YOU AS USER AND YOU ONLY ARE RESPONSIBLE FOR MAKING SURE THAT THE SOFTWARE FITS YOUR OPERATING REQUIREMENTS
+Or in legalese:
+
+The Software is provided "AS IS", without warranty of any kind,
+express or implied, including but not limited to the warranties of
+merchantability,  fitness for a particular purpose and
+noninfringement. In no event shall the  authors or copyright holders
+be liable for any claim, damages or other liability, whether in an
+action of contract, tort or otherwise, arising from, out of or in
+connection with the Software or the use or other dealings in the
+Software.
 
 # Grouping Nodes
 
 The call to our servermanagement metadata service is extremely simple and can easily be replaced by other logic such as:
- * dns calls for TEXT records or LOCATION records
- * Subnet logic (swarms grouped by subnet)
- * Any form of key logic that will group clients by a key based on the ipaddress that they have
- * Any form of external service that will return a group key
+
+* dns calls for TEXT records or LOCATION records
+* Subnet logic (swarms grouped by subnet)
+* Any form of key logic that will group clients by a key based on the ipaddress that they have
+* Any form of external service that will return a group key
 
 There is NO support at the moment for multiple concurrent transfers as the groups are organized by transfer hash, which
 is different per transfer.
@@ -82,7 +96,7 @@ a puppet template that we use to deploy the client in our environment. The varia
 
 # Redis storage model
 
-Transfer information is stored in redis and requires at least redis 2.0.4 and redis-py-2.0.0
+Transfer information is stored in redis and requires at least redis 2.0.x and redis-py-2.0.x
 The redis model is described below
 
 <pre>

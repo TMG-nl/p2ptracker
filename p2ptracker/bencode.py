@@ -1,7 +1,8 @@
 """
 # Written by Petru Paler, Uoti Urpala, Ross Cohen and John Hoffman
 Taken from the Bittornado package, which is under the MIT license.
-The original License.txt lists the copy right as follows:
+The original License.txt lists the copyright as follows:
+
 Copyright (C) 2001-2002 Bram Cohen
 
 Permission is hereby granted, free of charge, to any person
