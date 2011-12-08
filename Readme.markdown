@@ -1,6 +1,7 @@
 # Introduction
 
 This tracker is part of our entire deployment pipeline which consists of several moving parts:
+
 * Jenkins buildserver(s) that build our sourcecode
 * Custom scripting for starting deploys
 * rtorrent client running on every node participating in a deploy
