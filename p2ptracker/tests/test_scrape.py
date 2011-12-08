@@ -1,5 +1,8 @@
-__author__ = 'ramon'
-
+"""
+https://github.com/hyves-org/p2ptracker
+Copyright (c) 2011, Ramon van Alteren
+MIT license: http://www.opensource.org/licenses/MIT
+"""
 
 from flaskext.testing import TestCase
 from p2ptracker import create_app as mycreate_app

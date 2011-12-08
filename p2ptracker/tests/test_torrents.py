@@ -1,3 +1,9 @@
+"""
+https://github.com/hyves-org/p2ptracker
+Copyright (c) 2011, Ramon van Alteren
+MIT license: http://www.opensource.org/licenses/MIT
+"""
+
 from __future__ import with_statement
 
 from flaskext.testing import TestCase
@@ -8,8 +14,6 @@ import os
 import logging
 import redis
 import shutil
-
-__author__ = 'ramon'
 
 REMOVE_LOG=False
 SCRIPTDIR = os.path.dirname(__file__)
